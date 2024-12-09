@@ -40,7 +40,7 @@ $charset = 'utf8mb4';
 		$stmt =$pdo->prepare($sql);
 		$stmt->execute(['ln' => $ln, 'fn' => $fn, => 'mn' => $mn]);
 		echo "<br>Data inserted succesfully!";
-		$sql = "SELECT id. FirstName, MiddleName, LastName 
+		$sql = "SELECT id, FirstName, MiddleName, LastName 
 		FROM personaldata";
 		$stmt = $pdo->query($sql);
 		$rows = $stmt->fetchAll();
@@ -49,7 +49,7 @@ $charset = 'utf8mb4';
 			echo $row['FirstName']."<br>";
 			echo $row['MiddleName']."<br>"
 			echo $row['LastName']."<br>";
-			echo $row['ID']."<br>";
+			echo $row['ID']."<hr>";
 		endforeach
 
 
@@ -73,4 +73,10 @@ $charset = 'utf8mb4';
             </td></td>
         </tr>
         
-</table>             
+</table>                
+                
+	
+
+
+
+
