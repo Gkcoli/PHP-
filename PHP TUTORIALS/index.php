@@ -30,35 +30,47 @@ $charset = 'utf8mb4';
 		$asdsadsa = 0;
 	}
 
-	if($asdsadsa == 1 && isset($_POST['lastname']))
+	if($asdsadsa == 1 && isset($_POST['LastName']))
 	{ 
-		$ln = $_POST['lastname'];
-		$fn = $_POST['firstname'];
-		$mn = $_POST['middlename'];
+		$ln = $_POST['LastName'];
+		$fn = $_POST['FirstName'];
+		$mn = $_POST['MiddleName'];
 		echo "$ln, $fn, $mn";
+		$sql = "INSERT INTO personaldata (LastName, FirstName, MiddleName) VALUES (:ln, :fn, :mn)";
+		$stmt =$pdo->prepare($sql);
+		$stmt->execute(['ln' => $ln, 'fn' => $fn, => 'mn' => $mn]);
+		echo "<br>Data inserted succesfully!";
+		$sql = "SELECT id. FirstName, MiddleName, LastName 
+		FROM personaldata";
+		$stmt = $pdo->query($sql);
+		$rows = $stmt->fetchAll();
+
+		foreach ($rows as $row):
+			echo $row['FirstName']."<br>";
+			echo $row['MiddleName']."<br>"
+			echo $row['LastName']."<br>";
+			echo $row['ID']."<br>";
+		endforeach
+
+
 	}
+	
 
 ?>
 <table>
         <tr>
             <td>
                 <form action = "" method="POST">
-                Last Name<br>
-                <input type="text" name="lastname" required autofocus><br><br>
-                First Name<br>
-                <input type="text" name="firstname"><br><br>
-                Middle Name<br>
-                <input type="text" name="middlename"><br><br>
+                LastName<br>
+                <input type="text" name="LastName" required autofocus><br><br>
+                FirstName<br>
+                <input type="text" name="FirstName"><br><br>
+                MiddleName<br>
+                <input type="text" name="MiddleName"><br><br>
                 <input type="submit">
                 </form>
             </td>
             </td></td>
         </tr>
         
-</table>                
-                
-	
-
-
-
-
+</table>             
